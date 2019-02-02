@@ -5,7 +5,7 @@ class Home extends CI_Controller {
 
   public function index()
   {
-    $this->load->view('home');
+    $this->load->view('home/index');
   }
 
   public function store()
@@ -16,14 +16,8 @@ class Home extends CI_Controller {
 
   public function todos()
   {
-    $data = $this->model_home->todos();
-    $no = 1;
-    foreach($data as $key){
-      echo '<tr>
-        <td width=50%>'.$key["todo"].'<td>
-        <td>'.$key["updated_at"].'<td>
-      </tr>';
-    }
+    $data['data'] = $this->model_home->todos();
+    $this->load->view('home/components/listTodo',$data);
   }
 
 }

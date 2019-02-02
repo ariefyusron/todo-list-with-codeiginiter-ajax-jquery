@@ -69,14 +69,18 @@
                     <div class="input-group input-group-sm">
                       <input type="text" class="form-control" name="todo">
                       <span class="input-group-btn">
-                        <button class="btn btn-info btn-flat" type="submit" id="submit">Add</button>
+                        <button class="btn btn-info btn-flat" type="submit" id="submit">
+                          Add
+                        </button>
                       </span>
                     </div>
                   </form>
                 </div>
                 <div class="box-body">
                   <table id="todo-table" class="table">
-
+                    <tr>
+                      <td class="text-center"><img src="<?= base_url() ?>/assets/dist/img/spinner.gif" width=20></td>
+                    </tr>
                   </table>
                 </div>
               </div>
@@ -113,9 +117,6 @@
           $.ajax({
             url: 'http://localhost/TodoList/home/todos',
             type: 'GET',
-            beforeSend: () => {
-              todo.append('loading')
-            },
             success: (data) => {
               todo.empty()
               todo.append(data)
@@ -135,7 +136,7 @@
             data: form.serialize(),
             beforeSend: () => {
               submit.empty()
-              submit.append('Loading')
+              submit.append('<img src="<?= base_url() ?>/assets/dist/img/spinner.gif" width=20>')
             },
             success: (data) => {
               submit.empty()
